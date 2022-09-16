@@ -3,6 +3,7 @@ import { View, Image, FlatList } from 'react-native';
 import logoImg from '../../assets/logo-nlw-esports.png';
 import { GameCard, GameCardProps } from '../../components/GameCard';
 import { Heading } from '../../components/Heading';
+import { useNavigation } from '@react-navigation/native';
 import { GAMES } from '../../utils/games';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
@@ -10,6 +11,11 @@ import { Background } from '../../components/Background';
 
 export function Home() {
   const [ games, setGames ] = useState<GameCardProps[]>([]);
+  const navigation = useNavigation();
+  
+  function handleOpenGame() {
+    navigation.navigate('game');
+  }
 
   useEffect(() => {
     fetch('http://192.168.0.5:3333/games')
@@ -34,6 +40,7 @@ export function Home() {
           renderItem={({ item }) => (
             <GameCard 
               data={item}
+              onPress={handleOpenGame}
             />
           )}
           showsHorizontalScrollIndicator={false}
