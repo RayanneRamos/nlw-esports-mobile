@@ -4,7 +4,7 @@ import logoImg from '../../assets/logo-nlw-esports.png';
 import { GameCard, GameCardProps } from '../../components/GameCard';
 import { Heading } from '../../components/Heading';
 import { GAMES } from '../../utils/games';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 
 export function Home() {
@@ -17,7 +17,7 @@ export function Home() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image 
         source={logoImg}
         style={styles.logo}
@@ -39,6 +39,6 @@ export function Home() {
         contentContainerStyle={styles.contentList}
       />
       
-    </View>
+    </SafeAreaView>
   );
 }
