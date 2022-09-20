@@ -11,12 +11,14 @@ import logoImg from '../../assets/logo-nlw-esports.png';
 import { Heading } from '../../components/Heading';
 import { useNavigation } from '@react-navigation/native';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { DuoMatch } from '../../components/DuoMatch';
 
 export function Game() {
   const route = useRoute();
   const game = route.params as GameParams;
   const navigation = useNavigation();
   const [ duos, setDuos ] = useState<DuoCardProps[]>([]);
+  const [ discordDuoSelected, setDiscordDuoSelected ] = useState('efwefwefwef');
 
   function handleGoBack() {
     navigation.goBack();
@@ -72,6 +74,11 @@ export function Game() {
               Não há anúncios publico ainda.
             </Text>
           )}
+        />
+        <DuoMatch  
+          visible={discordDuoSelected.length > 0}
+          discord='rayanneramos'
+          onClose={() => setDiscordDuoSelected('')}
         />
       </SafeAreaView>
     </Background>
